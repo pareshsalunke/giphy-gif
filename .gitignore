@@ -59,8 +59,12 @@ typings/
 
 #mac
 .DS_Store
+<<<<<<< HEAD
 .idea/giphy-gif.iml
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
+=======
+.idea
+>>>>>>> 9de9dfd2a9ec6919b79f8bae3052f23f6525e091
