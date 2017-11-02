@@ -21,7 +21,7 @@ class SearchBar extends Component {
 	render() {
 		return (
 			<div className="search">
-				<input onKeyPress={event => this.onInputTermChange(event, event.target.value)}/>
+				<input placeholder="Enter text to search for gifs!" onKeyPress={event => this.onInputTermChange(event, event.target.value)}/>
 			</div>
 		);
 	}

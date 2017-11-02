@@ -4,10 +4,10 @@
 
 import React from 'react';
 
-const GifItem = (image) => {
+const GifItem = ({gif, onGifSelect}) => {
 	return (
-		<div className="gif-item">
-			<img alt="There is supposed to be a Gif here. Wondering!!" src={image.gif.images.fixed_height.url} />
+		<div className="gif-item" onClick={() => onGifSelect(gif)}>
+			<img alt="There is supposed to be a Gif here. Wondering!!" src={gif.images.fixed_height.url} />
 		</div>
 	);
 };
