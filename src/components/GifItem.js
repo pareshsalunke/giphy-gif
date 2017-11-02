@@ -6,9 +6,9 @@ import React from 'react';
 
 const GifItem = (image) => {
 	return (
-		<li>
-			<img alt="whatever for now. change to api text" src={image.gif.url} />
-		</li>
+		<div className="gif-item">
+			<img alt="There is supposed to be a Gif here. Wondering!!" src={image.gif.images.fixed_height.url} />
+		</div>
 	);
 };
 
