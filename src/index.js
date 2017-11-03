@@ -1,70 +1,17 @@
 // eslint-disable-next-line
 "use strict";
-
-//Library Imports
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
-import request from 'superagent';
+import App from './containers/App';
+import {Provider} from 'react-redux';
+import configureStore from './store/configureStore';
 
-//Custom File imports
-import SearchBar from './components/SearchBar';
-import GifList from './components/GifList';
-import GifModal from './components/GifModal';
-import './styles/app.css';
+const store = configureStore();
 
-const API_KEY = "dJkVfg0pxoWLpo6Dh6HUY5fcifL6JJoU";
+ReactDOM.render(
+	<Provider store={store} >
+		<App />
+	</Provider>,
+	document.getElementById('app')
+);
 
-class App extends Component {
-	constructor() {
-		super();
-
-		this.state = {
-			gifs: [],
-			selectedGif: null,
-			modalIsOpen: false
-
-		};
-
-		this.handleTermChange = this.handleTermChange.bind(this);
-	}
-
-	openModal(gif) {
-		this.setState({
-			modalIsOpen: true,
-			selectedGif: gif
-		});
-	}
-
-	closeModal() {
-		this.setState({
-			modalIsOpen: false,
-			selectedGif: null
-		})
-	}
-
-	handleTermChange(term) {
-		const ROOT_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${term.replace(/\s/g, '+')}&limit=25&offset=0&rating=G&lang=en`;
-
-		request.get(ROOT_URL, (err, res) => {
-			console.info(res.body.data[0]);
-			this.setState({ gifs: res.body.data })
-		});
-	}
-
-	render() {
-		return (
-			<div>
-				<SearchBar onTermChange={term => this.handleTermChange(term)} />
-				<GifList gifs = {this.state.gifs}
-						 onGifSelect={selectedGif => this.openModal(selectedGif)} />
-				<GifModal   modalIsOpen={this.state.modalIsOpen}
-							selectedGif={this.state.selectedGif}
-							onRequestClose = {() => this.closeModal()} />
-			</div>
-		);
-	}
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
-registerServiceWorker();
