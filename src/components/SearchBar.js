@@ -4,24 +4,16 @@
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
-
-	constructor() {
-		super();
-		this.state={ term: '' }
-	}
-
-	onInputTermChange(e, term) {
-		this.setState({term});
-
+	onInputTermChange(e) {
 		if (e.key === 'Enter') {
-			this.props.onTermChange(term);
+			this.props.onTermChange(e.target.value);
 		}
 	}
 
 	render() {
 		return (
 			<div className="search">
-				<input placeholder="Enter text to search for gifs!" onKeyPress={event => this.onInputTermChange(event, event.target.value)}/>
+				<input placeholder="Enter text to search for gifs!" onKeyPress={event => this.onInputTermChange(event)}/>
 			</div>
 		);
 	}

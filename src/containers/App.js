@@ -2,14 +2,19 @@
  * Created by ParryPC on 11/2/17.
  */
 import React, { Component } from 'react';
-import GifsTemp from '../components/GifsTemp';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as Actions from '../actions';
+import SearchBar from '../components/SearchBar';
+
+// CSS
+import '../styles/app.css';
 
 class App extends Component {
 	render() {
 		return (
 			<div>
-				<GifsTemp gifs = { this.props.gifs } />
+				<SearchBar onTermChange={ this.props.actions.requestGifs } />
 			</div>
 		);
 	}
@@ -21,4 +26,11 @@ function mapStateToProps({gifs}) {
 	};
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+
+	return {
+		actions: bindActionCreators(Actions,dispatch)
+	};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

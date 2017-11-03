@@ -1,21 +1,25 @@
 /**
  * Created by ParryPC on 11/2/17.
  */
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
+import ReduxPromise from 'redux-promise';
 
 export default function configureStore(initialState) {
-
 	const store = createStore(
 		rootReducer,
 		initialState,
-		window.devToolsExtension ? window.devToolsExtension : undefined
+		compose (
+			applyMiddleware(ReduxPromise),
+			window.devToolsExtension ? window.devToolsExtension() : undefined
+		)
 	);
 
-	if(module.hot) {
+	if (module.hot) {
+		// Enable Webpack hot module replacement for reducers
 		module.hot.accept('../reducers', () => {
-			const nextReducer = require('../reducers').default;
-			store.replaceReducer(nextReducer);
+			const nextRootReducer = require('../reducers').default;
+			store.replaceReducer(nextRootReducer);
 		});
 	}
 
