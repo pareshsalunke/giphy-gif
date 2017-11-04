@@ -1,20 +1,25 @@
 /**
  * Created by ParryPC on 11/2/17.
  */
+import { REQUEST_GIFS, TRENDING_GIFS } from '../actions';
 
-export default function() {
-	return [
-		{
-			id: 1,
-			url: 'http://fakeimg.pl/300/'
-		},
-		{
-			id: 2,
-			url: 'http://fakeimg.pl/300/'
-		},
-		{
-			id: 3,
-			url: 'http://fakeimg.pl/300/'
-		}
-	];
+const initialState = {
+	data: []
+}
+
+export default function gifs(state=initialState, action) {
+	switch(action.type) {
+		case REQUEST_GIFS:
+			return {
+				...state, data: action.payload.body.data
+			};
+
+		case TRENDING_GIFS:
+			return {
+				...state, data: action.payload.body.data
+			}
+
+		default:
+			return state;
+	}
 }

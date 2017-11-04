@@ -3,9 +3,12 @@
  */
 import { combineReducers } from 'redux';
 import GifsReducers from './reducer_gifs';
+import ModalReducers from './reducer_modal';
 
 const rootReducer = combineReducers({
-	gifs: GifsReducers
+	gifs: GifsReducers,
+	trendingGifs: GifsReducers,
+	modal: ModalReducers
 });
 
 export default rootReducer;

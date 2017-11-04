@@ -13,7 +13,7 @@ class SearchBar extends Component {
 	render() {
 		return (
 			<div className="search">
-				<input placeholder="Enter text to search for gifs!" onKeyPress={event => this.onInputTermChange(event)}/>
+				<input placeholder="Enter text to search for gifs!" autoComplete="on" onKeyPress={event => this.onInputTermChange(event)}/>
 			</div>
 		);
 	}
