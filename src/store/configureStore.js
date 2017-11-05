@@ -10,8 +10,8 @@ export default function configureStore(initialState) {
 		rootReducer,
 		initialState,
 		compose (
-			applyMiddleware(ReduxPromise),
-			window.devToolsExtension ? window.devToolsExtension() : undefined
+			applyMiddleware(ReduxPromise)
+			// window.devToolsExtension ? window.devToolsExtension() : undefined
 		)
 	);
 
