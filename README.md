@@ -32,4 +32,4 @@ You are making this world a better place by using GIFs
 If it doesn't work, please email me at pareshsalunke@gmail.com
 
 OPTIONAL
-Removed the reference for Chrome dev tool extension from configureStore since not everyone needs it unless except for development purpose. Its a really good tool for Redux development. If you happen to install it in chrome, please uncomment the 
+Removed the reference for Chrome dev tool extension from configureStore since not everyone needs it unless except for development purpose. Its a really good tool for Redux development. If you happen to install it in chrome, please uncomment the line 14 and add comma (",") at the end of line 13 of ~/<project-root-directory>/src/store/configureStore.js
